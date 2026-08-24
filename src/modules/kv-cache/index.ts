@@ -9,3 +9,4 @@ export const kvCacheState = writable<KVCacheState>({
 });
 
 export * from './types';
+export * from './kvCacheSimulator';

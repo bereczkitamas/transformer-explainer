@@ -43,6 +43,10 @@
 	import BlockTransition from '~/components/BlockTransition.svelte';
 	import QKV from '~/components/QKV.svelte';
 	import Textbook from '~/components/textbook/Textbook.svelte';
+	import { inputTextExample } from '~/store';
+	import AutoregressiveControls from '~/modules/autoregressive/AutoregressiveControls.svelte';
+	import GenerationHistory from '~/modules/autoregressive/GenerationHistory.svelte';
+	import KVCacheVisualizer from '~/modules/kv-cache/KVCacheVisualizer.svelte';
 
 	ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.23.0/dist/';
 	ort.env.logLevel = 'error';
@@ -203,6 +207,13 @@
 		<Sankey />
 	</div>
 	<div class="nodes resize-watch">
+		<!-- Phase 1 Toolbar & KV Cache Dock -->
+		<div class="phase1-control-dock mx-auto mb-3 w-full max-w-6xl px-4">
+			<AutoregressiveControls initialText={inputTextExample[$selectedExampleIdx]} />
+			<GenerationHistory />
+			<KVCacheVisualizer />
+		</div>
+
 		<div class="steps" class:expanded={!!$expandedBlock.id} bind:offsetHeight={vizHeight}>
 			<Embedding className="step" />
 			<div class="blocks relative">

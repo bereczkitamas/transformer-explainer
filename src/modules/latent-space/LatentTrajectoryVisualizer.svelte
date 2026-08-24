@@ -100,25 +100,49 @@
 					<!-- Layer Nodes -->
 					{#each points as point}
 						<g
-							class="cursor-pointer transition-transform hover:scale-125"
+							class="cursor-pointer"
 							on:mouseenter={() => (hoveredLayer = point.layerIdx)}
 							on:mouseleave={() => (hoveredLayer = null)}
 						>
+							<!-- Invisible larger hit area to ensure smooth, flicker-free hover -->
 							<circle
 								cx={point.vector2D[0]}
 								cy={point.vector2D[1]}
-								r={hoveredLayer === point.layerIdx ? 7 : 4.5}
-								fill={point.layerIdx === 1 ? '#38bdf8' : point.layerIdx === 12 ? '#34d399' : '#c084fc'}
-								stroke="#ffffff"
-								stroke-width="1.5"
+								r="16"
+								fill="transparent"
 							/>
+							<!-- Visible node circle -->
+							<circle
+								cx={point.vector2D[0]}
+								cy={point.vector2D[1]}
+								r={hoveredLayer === point.layerIdx ? 6.5 : 4.5}
+								fill={point.layerIdx === 1 ? '#38bdf8' : point.layerIdx === 12 ? '#34d399' : '#c084fc'}
+								stroke={hoveredLayer === point.layerIdx ? '#ffffff' : '#e2e8f0'}
+								stroke-width={hoveredLayer === point.layerIdx ? '2' : '1.5'}
+								class="pointer-events-none transition-all duration-150"
+							/>
+							<!-- Subtle glow ring on hover -->
+							{#if hoveredLayer === point.layerIdx}
+								<circle
+									cx={point.vector2D[0]}
+									cy={point.vector2D[1]}
+									r="11"
+									fill="none"
+									stroke={point.layerIdx === 1 ? '#38bdf8' : point.layerIdx === 12 ? '#34d399' : '#c084fc'}
+									stroke-width="1.5"
+									opacity="0.7"
+									class="pointer-events-none"
+								/>
+							{/if}
+							<!-- Node label -->
 							<text
-								x={point.vector2D[0] + 8}
+								x={point.vector2D[0] + 9}
 								y={point.vector2D[1] + 3}
-								fill="#ffffff"
-								font-size="9"
+								fill={hoveredLayer === point.layerIdx ? '#38bdf8' : '#ffffff'}
+								font-size={hoveredLayer === point.layerIdx ? '10' : '9'}
 								font-family="monospace"
 								font-weight="bold"
+								class="pointer-events-none select-none transition-colors duration-150"
 							>
 								L{point.layerIdx}
 							</text>
@@ -127,12 +151,12 @@
 				</svg>
 
 				<!-- Hover details HUD -->
-				<div class="mt-2 flex items-center justify-between rounded bg-slate-800/90 px-3 py-1.5 text-xs text-white">
+				<div class="mt-2 flex min-h-[2.25rem] items-center justify-between rounded bg-slate-800/90 px-3 py-1.5 text-xs text-white">
 					<div>
 						{#if hoveredLayer !== null}
 							{@const pt = points[hoveredLayer - 1]}
 							<span class="font-bold text-sky-400">Layer {hoveredLayer}:</span>
-							<span class="ml-1 text-gray-300">{pt?.clusterLabel}</span>
+							<span class="ml-1 text-gray-200">{pt?.clusterLabel}</span>
 						{:else}
 							<span class="text-gray-400">💡 Hover over layer nodes (L1–L12) to inspect stage details</span>
 						{/if}

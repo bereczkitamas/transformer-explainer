@@ -24,13 +24,13 @@
 	<!-- Trigger Pill -->
 	<button
 		type="button"
-		class="flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white/95 px-3 py-2 text-xs font-semibold text-sky-900 shadow-xs transition hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-300 select-none"
+		class="flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white/95 px-3 py-2 text-xs font-semibold text-sky-900 shadow-2xs transition hover:bg-sky-50 focus:outline-none select-none"
 		on:click={() => (isExpanded = !isExpanded)}
 	>
 		<span class="flex h-4 w-4 items-center justify-center rounded bg-sky-600 text-white text-[10px]">
 			🌌
 		</span>
-		<span>Látens Tér Trajektória (2D PCA)</span>
+		<span>Latent Trajectory (2D PCA)</span>
 		<svg
 			class="h-3.5 w-3.5 text-sky-400 transition-transform duration-200"
 			class:rotate-180={isExpanded}
@@ -49,10 +49,10 @@
 			<div class="mb-3 flex items-center justify-between border-b border-gray-100 pb-2">
 				<div>
 					<h4 class="text-sm font-bold text-gray-800 flex items-center gap-1.5">
-						<span>🌌 Látens Tér Vektortér-Trajektória</span>
-						<span class="rounded bg-sky-100 px-1.5 py-0.5 text-[10px] text-sky-800 font-semibold">2D Szemantikai Vetület</span>
+						<span>🌌 Latent Space Trajectory</span>
+						<span class="rounded bg-sky-100 px-1.5 py-0.5 text-[10px] text-sky-800 font-semibold">2D Semantic Projection</span>
 					</h4>
-					<p class="text-xs text-gray-500">Hogyan vándorol a szó reprezentációja rétegről rétegre a látens térben?</p>
+					<p class="text-xs text-gray-500">How token vector representations migrate through intermediate layers</p>
 				</div>
 				<button
 					type="button"
@@ -68,13 +68,13 @@
 				<svg viewBox="0 0 600 360" class="h-64 w-full">
 					<!-- Semantic Background Regions -->
 					<circle cx="90" cy="270" r="70" fill="#3b82f6" opacity="0.15" />
-					<text x="50" y="330" fill="#60a5fa" font-size="11" font-weight="bold">1. Szintaktikai Bemenet</text>
+					<text x="50" y="330" fill="#60a5fa" font-size="11" font-weight="bold">1. Syntactic Input Space</text>
 
 					<circle cx="280" cy="180" r="75" fill="#8b5cf6" opacity="0.15" />
-					<text x="230" y="245" fill="#c084fc" font-size="11" font-weight="bold">2. Kontextuális Figyelem (QKV)</text>
+					<text x="220" y="245" fill="#c084fc" font-size="11" font-weight="bold">2. Contextual Attention (QKV)</text>
 
 					<circle cx="510" cy="100" r="65" fill="#10b981" opacity="0.15" />
-					<text x="440" y="55" fill="#34d399" font-size="11" font-weight="bold">3. Kimeneti Logit Célmedence</text>
+					<text x="440" y="55" fill="#34d399" font-size="11" font-weight="bold">3. Target Logit Basin</text>
 
 					<!-- Animated Connecting Path -->
 					{#if pathD}
@@ -134,7 +134,7 @@
 							<span class="font-bold text-sky-400">Layer {hoveredLayer}:</span>
 							<span class="ml-1 text-gray-300">{pt?.clusterLabel}</span>
 						{:else}
-							<span class="text-gray-400">💡 Húzd az egeret a rétegpontok (L1–L12) fölé a részletekért</span>
+							<span class="text-gray-400">💡 Hover over layer nodes (L1–L12) to inspect stage details</span>
 						{/if}
 					</div>
 					<span class="font-mono text-[10px] text-gray-400">Dim: 768d ➔ 2D PCA</span>

@@ -5,7 +5,6 @@
 
 	let isExpanded = false;
 
-	// Automatically update when model outputs change
 	$: if ($modelData) {
 		updateLogitLens();
 	}
@@ -15,10 +14,10 @@
 	});
 
 	const getLayerRole = (layer: number) => {
-		if (layer <= 3) return { label: 'Szintaxis', color: 'bg-blue-100 text-blue-800' };
-		if (layer <= 7) return { label: 'Kontextus', color: 'bg-indigo-100 text-indigo-800' };
-		if (layer <= 10) return { label: 'Szemantika', color: 'bg-purple-100 text-purple-800' };
-		return { label: 'Kimenet', color: 'bg-emerald-100 text-emerald-800' };
+		if (layer <= 3) return { label: 'Syntax', color: 'bg-blue-100 text-blue-800' };
+		if (layer <= 7) return { label: 'Context', color: 'bg-indigo-100 text-indigo-800' };
+		if (layer <= 10) return { label: 'Semantics', color: 'bg-purple-100 text-purple-800' };
+		return { label: 'Output', color: 'bg-emerald-100 text-emerald-800' };
 	};
 </script>
 
@@ -26,13 +25,13 @@
 	<!-- Trigger Pill -->
 	<button
 		type="button"
-		class="flex items-center gap-1.5 rounded-xl border border-purple-200 bg-white/95 px-3 py-2 text-xs font-semibold text-purple-900 shadow-xs transition hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-300 select-none"
+		class="flex items-center gap-1.5 rounded-xl border border-purple-200 bg-white/95 px-3 py-2 text-xs font-semibold text-purple-900 shadow-2xs transition hover:bg-purple-50 focus:outline-none select-none"
 		on:click={() => (isExpanded = !isExpanded)}
 	>
 		<span class="flex h-4 w-4 items-center justify-center rounded bg-purple-600 text-white text-[10px]">
 			👁️
 		</span>
-		<span>Logit Lens (12 Réteg)</span>
+		<span>Logit Lens (12 Layers)</span>
 		<svg
 			class="h-3.5 w-3.5 text-purple-400 transition-transform duration-200"
 			class:rotate-180={isExpanded}
@@ -51,10 +50,10 @@
 			<div class="mb-3 flex items-center justify-between border-b border-gray-100 pb-2">
 				<div>
 					<h4 class="text-sm font-bold text-gray-800 flex items-center gap-1.5">
-						<span>👁️ Logit Lens Műhely</span>
-						<span class="rounded bg-purple-100 px-1.5 py-0.5 text-[10px] text-purple-800 font-semibold">GPT-2 Mélységi Elemzés</span>
+						<span>👁️ Logit Lens Inspector</span>
+						<span class="rounded bg-purple-100 px-1.5 py-0.5 text-[10px] text-purple-800 font-semibold">Layer Depth Analysis</span>
 					</h4>
-					<p class="text-xs text-gray-500">Milyen szót jósolna a modell, ha az adott rétegből közvetlenül a kimenetre kötnénk?</p>
+					<p class="text-xs text-gray-500">What token would the model predict if decoded directly at each intermediate layer?</p>
 				</div>
 				<button
 					type="button"
@@ -107,7 +106,7 @@
 
 			<!-- Pedagogical footnote -->
 			<div class="mt-3 rounded-md bg-purple-50 p-2 text-[11px] text-purple-900">
-				💡 <strong>Megfigyelés:</strong> A korai rétegekben (L1–L3) a modell még csak a nyelvtani szerkezetet tippelgeti, majd a rétegeken át haladva a valószínűség fokozatosan rácsapódik a végleges szemantikai nyertesre.
+				💡 <strong>Insight:</strong> In early layers (L1–L3), the model predicts generic syntax. As activations propagate through self-attention, probability sharpens onto the final contextual winner.
 			</div>
 		</div>
 	{/if}

@@ -706,16 +706,16 @@
 
 <svelte:window bind:innerWidth={screenWidth} />
 
-<div bind:clientWidth={screenWidth} class="h-full w-full">
+<div bind:clientWidth={screenWidth} class="h-full w-full pointer-events-none">
 	<svg
 		bind:this={svgBackEl}
 		id="back"
-		class="sankey-back absolute left-0 top-0 h-full w-full"
+		class="sankey-back absolute left-0 top-0 h-full w-full pointer-events-none"
 		style={`z-index:${$modelMeta.attention_head_num - 1};`}
 	></svg>
 	<svg
 		bind:this={svgEl}
-		class="sankey-top absolute left-0 top-0 h-full w-full"
+		class="sankey-top absolute left-0 top-0 h-full w-full pointer-events-none"
 		style={`z-index:${$modelMeta.attention_head_num};`}
 	/>
 </div>

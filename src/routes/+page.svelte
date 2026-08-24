@@ -257,6 +257,11 @@
 		padding: 1rem 0 3rem 0;
 		position: relative;
 	}
+	.phase1-control-dock {
+		position: relative;
+		z-index: 600;
+		pointer-events: auto;
+	}
 	.steps {
 		position: relative;
 		width: 100%;

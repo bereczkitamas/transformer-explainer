@@ -56,3 +56,7 @@ type ModelData = {
 };
 
 type Sampling = { type: 'top-k' | 'top-p'; value: number };
+
+interface Window {
+	dataLayer?: any[];
+}

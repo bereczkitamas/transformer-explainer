@@ -561,12 +561,49 @@ export const textPages: TextbookPage[] = [
 		out: () => {
 			removeHighlightFromElements(['.operation-col.dropout']);
 		}
+	},
+	{
+		id: 'autoregressive-generation',
+		title: 'Autoregressive Generation',
+		content: `<p>Language models don't write an entire paragraph in a single forward pass. Instead, they operate <strong>autoregressively</strong> in a continuous feedback loop:</p><div class="numbered-list"><div class="numbered-item"><span class="number-circle">1</span><div class="item-content">Predict the single next token based on current prompt.</div></div><div class="numbered-item"><span class="number-circle">2</span><div class="item-content">Append that new token to the prompt text.</div></div><div class="numbered-item"><span class="number-circle">3</span><div class="item-content">Run the entire model again to predict the subsequent word.</div></div></div><p>Try clicking <strong>Play Generation</strong> or <strong>Step (+1 Token)</strong> in the top toolbar to see this cycle unfold live!</p>`,
+		on: () => {
+			highlightElements(['.autoregressive-toolbar']);
+		},
+		out: () => {
+			removeHighlightFromElements(['.autoregressive-toolbar']);
+		}
+	},
+	{
+		id: 'kv-cache',
+		title: 'KV Cache: Scaling Inference',
+		content: `<p>In a naive Transformer, generating each new token requires re-computing Key and Value vectors for all previous words, resulting in slow <strong>quadratic \(O(N^2)\) computational cost</strong>.</p><p>With <strong>KV Caching</strong>, past Key and Value matrices across all 12 layers are retained in memory. When a new token arrives, the model only computes \(Q, K, V\) for that <strong>single 1 token</strong>, achieving lightning-fast <strong>linear \(O(N)\) generation</strong>.</p><p>Click the <strong>KV Cache</strong> button to inspect the simulated memory buffer and FLOPs saved!</p>`,
+		on: () => {
+			highlightElements(['.phase1-control-dock']);
+		},
+		out: () => {
+			removeHighlightFromElements(['.phase1-control-dock']);
+		}
+	},
+	{
+		id: 'logit-lens',
+		title: 'Logit Lens: Peeking Inside',
+		content: `<p>What is happening inside the model before it reaches the final layer? <strong>Logit Lens</strong> decodes intermediate activations at each layer through the unembedding matrix.</p><p>This reveals the model's inner reasoning progression:</p><ul class="bullet-list"><li><strong>Layers 1–3:</strong> Resolves surface syntax and parts-of-speech.</li><li><strong>Layers 4–7:</strong> Integrates context via multi-head attention.</li><li><strong>Layers 8–12:</strong> Converges on the specific semantic prediction.</li></ul><p>Click <strong>Logit Lens (12 Layers)</strong> to inspect intermediate probabilities.</p>`,
+		on: () => {
+			highlightElements(['.phase1-control-dock']);
+		},
+		out: () => {
+			removeHighlightFromElements(['.phase1-control-dock']);
+		}
+	},
+	{
+		id: 'latent-trajectory',
+		title: 'Latent Space Trajectory',
+		content: `<p>In Transformer architectures, words travel through a high-dimensional vector space (768 dimensions in GPT-2 small).</p><p>By applying <strong>Principal Component Analysis (PCA)</strong>, we project this journey into a 2D map. Watch how the token vector starts in the <em>Syntactic Input</em> area, curves through <em>Contextual Attention</em>, and lands in the <em>Target Logit Basin</em>.</p><p>Click <strong>Latent Trajectory (2D PCA)</strong> to explore the semantic vector flow.</p>`,
+		on: () => {
+			highlightElements(['.phase1-control-dock']);
+		},
+		out: () => {
+			removeHighlightFromElements(['.phase1-control-dock']);
+		}
 	}
-	// {
-	// 	id: 'final',
-	// 	title: `Let's explore!`,
-	// 	content: '',
-	// 	on: () => {},
-	// 	out: () => {}
-	// }
 ];

@@ -5,3 +5,5 @@ export const logitLensState = writable<LayerLogitLens[]>([]);
 export const trajectoryState = writable<LatentTrajectoryPoint[]>([]);
 
 export * from './types';
+export * from './logitLens';
+export * from './trajectoryCalculator';

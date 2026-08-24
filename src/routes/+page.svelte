@@ -15,6 +15,7 @@
 		modelSession,
 		isFetchingModel,
 		selectedExampleIdx,
+		inputTextExample,
 		isMobile,
 		isOnBlockTransition,
 		blockIdx,
@@ -43,10 +44,11 @@
 	import BlockTransition from '~/components/BlockTransition.svelte';
 	import QKV from '~/components/QKV.svelte';
 	import Textbook from '~/components/textbook/Textbook.svelte';
-	import { inputTextExample } from '~/store';
 	import AutoregressiveControls from '~/modules/autoregressive/AutoregressiveControls.svelte';
 	import GenerationHistory from '~/modules/autoregressive/GenerationHistory.svelte';
 	import KVCacheVisualizer from '~/modules/kv-cache/KVCacheVisualizer.svelte';
+	import LogitLensVisualizer from '~/modules/latent-space/LogitLensVisualizer.svelte';
+	import LatentTrajectoryVisualizer from '~/modules/latent-space/LatentTrajectoryVisualizer.svelte';
 
 	ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.23.0/dist/';
 	ort.env.logLevel = 'error';
@@ -207,13 +209,15 @@
 		<Sankey />
 	</div>
 	<div class="nodes resize-watch">
-		<!-- Phase 1 Toolbar & KV Cache Dock -->
+		<!-- Phase 1 & 2 Toolbar & Diagnostic Dock -->
 		<div class="phase1-control-dock mx-auto mb-2 w-full max-w-6xl px-4 flex flex-col gap-1.5">
-			<div class="flex flex-wrap items-center justify-between gap-3">
+			<div class="flex flex-wrap items-center justify-between gap-2.5">
 				<div class="grow">
 					<AutoregressiveControls initialText={inputTextExample[$selectedExampleIdx]} />
 				</div>
-				<div class="w-full sm:w-auto">
+				<div class="flex flex-wrap items-center gap-2">
+					<LogitLensVisualizer />
+					<LatentTrajectoryVisualizer />
 					<KVCacheVisualizer />
 				</div>
 			</div>

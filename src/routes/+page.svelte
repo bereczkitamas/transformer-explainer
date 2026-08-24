@@ -208,10 +208,16 @@
 	</div>
 	<div class="nodes resize-watch">
 		<!-- Phase 1 Toolbar & KV Cache Dock -->
-		<div class="phase1-control-dock mx-auto mb-3 w-full max-w-6xl px-4">
-			<AutoregressiveControls initialText={inputTextExample[$selectedExampleIdx]} />
+		<div class="phase1-control-dock mx-auto mb-2 w-full max-w-6xl px-4 flex flex-col gap-1.5">
+			<div class="flex flex-wrap items-center justify-between gap-3">
+				<div class="grow">
+					<AutoregressiveControls initialText={inputTextExample[$selectedExampleIdx]} />
+				</div>
+				<div class="w-full sm:w-auto">
+					<KVCacheVisualizer />
+				</div>
+			</div>
 			<GenerationHistory />
-			<KVCacheVisualizer />
 		</div>
 
 		<div class="steps" class:expanded={!!$expandedBlock.id} bind:offsetHeight={vizHeight}>

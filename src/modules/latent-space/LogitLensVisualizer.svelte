@@ -25,7 +25,7 @@
 	<!-- Trigger Pill -->
 	<button
 		type="button"
-		class="flex items-center gap-1.5 rounded-xl border border-purple-200 bg-white/95 px-3 py-2 text-xs font-semibold text-purple-900 shadow-2xs transition hover:bg-purple-50 focus:outline-none select-none"
+		class="logit-lens-btn flex items-center gap-1.5 rounded-xl border border-purple-200 bg-white/95 px-3 py-2 text-xs font-semibold text-purple-900 shadow-2xs transition hover:bg-purple-50 focus:outline-none select-none"
 		on:click={() => (isExpanded = !isExpanded)}
 	>
 		<span class="flex h-4 w-4 items-center justify-center rounded bg-purple-600 text-white text-[10px]">

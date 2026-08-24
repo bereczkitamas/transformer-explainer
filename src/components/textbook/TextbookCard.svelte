@@ -332,11 +332,11 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+			max-height: 100%;
+			overflow-y: auto;
+			padding-right: 0.35rem;
 			opacity: 0;
 			transition: opacity 0.3s ease;
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: center;
 
 			&.active {
 				opacity: 1;

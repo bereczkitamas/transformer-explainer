@@ -157,6 +157,31 @@
 		}
 	}
 
+	// page - autoregressive & interactive extensions
+	:global(.play-btn.textbook-highlight),
+	:global(.step-btn.textbook-highlight),
+	:global(.kv-cache-btn.textbook-highlight),
+	:global(.logit-lens-btn.textbook-highlight),
+	:global(.latent-trajectory-btn.textbook-highlight) {
+		box-shadow: var(--textbook-highlight-shadow-out) !important;
+		outline: 2px solid var(--textbook-highlight-color) !important;
+		position: relative;
+		&::after {
+			content: '👆';
+			display: block;
+			white-space: nowrap;
+			position: absolute;
+			bottom: -2.4rem;
+			left: 50%;
+			transform: translateX(-50%);
+			color: var(--textbook-highlight-color);
+			font-size: 1.8rem;
+			pointer-events: none;
+			animation: finger-poke 1.5s ease-in-out infinite;
+			z-index: 100;
+		}
+	}
+
 	// page - architecture
 	:global(.step.textbook-highlight > .title) {
 		width: 1rem !important;

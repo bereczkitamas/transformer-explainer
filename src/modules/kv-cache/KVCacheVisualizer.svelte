@@ -14,7 +14,7 @@
 	<!-- Trigger Header -->
 	<button
 		type="button"
-		class="flex cursor-pointer items-center justify-between gap-2.5 rounded-xl border border-slate-200 bg-white/95 px-3 py-2 text-xs shadow-2xs select-none hover:bg-slate-50 transition-all focus:outline-none"
+		class="kv-cache-btn flex cursor-pointer items-center justify-between gap-2.5 rounded-xl border border-slate-200 bg-white/95 px-3 py-2 text-xs shadow-2xs select-none hover:bg-slate-50 transition-all focus:outline-none"
 		on:click={() => (isExpanded = !isExpanded)}
 	>
 		<div class="flex items-center gap-1.5">

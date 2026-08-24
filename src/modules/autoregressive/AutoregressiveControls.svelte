@@ -37,7 +37,7 @@
 	<div class="flex items-center gap-2">
 		<button
 			type="button"
-			class="flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-semibold text-white shadow-2xs transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1"
+			class="play-btn flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-semibold text-white shadow-2xs transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1"
 			class:bg-emerald-600={!isPlaying}
 			class:hover:bg-emerald-700={!isPlaying}
 			class:bg-amber-500={isPlaying}
@@ -61,7 +61,7 @@
 
 		<button
 			type="button"
-			class="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-2xs transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300 disabled:opacity-50"
+			class="step-btn flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-2xs transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300 disabled:opacity-50"
 			on:click={handleStep}
 			disabled={isPlaying || $isModelRunning}
 			title="Generate exactly 1 next token"
@@ -74,7 +74,7 @@
 
 		<button
 			type="button"
-			class="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-600 shadow-2xs transition hover:bg-gray-50 focus:outline-none"
+			class="reset-btn flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-600 shadow-2xs transition hover:bg-gray-50 focus:outline-none"
 			on:click={handleReset}
 			title="Reset to initial prompt text"
 		>

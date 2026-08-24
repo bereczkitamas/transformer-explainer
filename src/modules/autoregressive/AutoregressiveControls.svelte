@@ -87,7 +87,10 @@
 
 	<!-- Center: Step Indicator -->
 	<div class="flex items-center gap-2 text-xs font-medium text-gray-600">
-		<span class="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-semibold text-indigo-800">
+		<span
+			class="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-semibold text-indigo-800 cursor-help"
+			title="Generates up to 20 new tokens per sequence (max_new_tokens limit)"
+		>
 			Step: {currentStep} / {maxTokens}
 		</span>
 		{#if isPlaying}

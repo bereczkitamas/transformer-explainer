@@ -565,7 +565,7 @@ export const textPages: TextbookPage[] = [
 	{
 		id: 'autoregressive-generation',
 		title: 'Autoregressive Generation',
-		content: `<p>LLMs generate text <strong>autoregressively</strong> in a continuous feedback loop: predicting one next token, appending it to the prompt, and repeating.</p><p>Click <strong>Play Generation</strong> or <strong>Step (+1 Token)</strong> to watch the loop generate text word by word!</p>`,
+		content: `<p>LLMs generate text <strong>autoregressively</strong> in a loop (up to a 20-token sequence limit): predicting 1 next token, appending it to the prompt, and repeating.</p><p>Click <strong>Play Generation</strong> or <strong>Step (+1 Token)</strong> to watch the loop generate text word by word!</p>`,
 		on: () => {
 			highlightElements(['.play-btn', '.step-btn']);
 		},
